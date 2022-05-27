@@ -7,35 +7,38 @@ using namespace std;
 
 int main()
 {
-	Engine engine;
-	Engine engine2(true);
+	setlocale(LC_ALL, "ru");
 
-	engine = false;
-	engine.Start();
+	Engine eng;
 
-	engine.End();
-
-	engine.PressPedal();
-
-	engine.PressPedal(30);
-	engine.PressPedal(15);
+	eng.Start();
+	eng.End();
 	cout << endl;
-	
+
+	Engine eng2(false);//сломанный двигатель
+	eng2.Start();
+	eng2.FixEngine();
+	eng2.Start();
+
+	cout << endl;
+	EngineVNSgor engVN;
+	engVN.Start();
+	engVN.AddFuel(5);
+	engVN.Start();
+	engVN.End();
+
+	cout << endl;
+	DieselEngine dis;
+	dis.Start();
+	dis.AddFuel(10);
+	dis.Start();
+	dis.End();
+
+	cout << endl;
 	JetEngine jet;
-	jet.refuel(2);
+	jet.Start();
+	jet.refuel(5);
+	jet.refuel(20);
 	jet.ShowFuel();
-	cout << endl;
-
-	EngineVNSgor vnsgor;
-
-	vnsgor = true;
-
-	vnsgor.CheckCor0();
-	vnsgor.CheckCor1();
-	cout << endl;
-
-	DieselEngine DiesEng;
-
-	DiesEng.EngineSpeed();
-	DiesEng.EngineSpeed(50);
+	jet.End();
 }

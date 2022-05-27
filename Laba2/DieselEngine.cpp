@@ -2,16 +2,20 @@
 
 DieselEngine::DieselEngine()
 {
-	Standart = 1200;
+	IsRunning = false;
+	workingCorrectly = true;
+	Fuel = 0;
 }
 
-void DieselEngine::EngineSpeed()
+void DieselEngine::Start()
 {
-	cout << "Количество холостых оборотов: " << Standart << endl;
-}
-
-void DieselEngine::EngineSpeed(int Turns)
-{
-	int Turns0 = Turns * 15;
-	cout << "Обороты в данный момент" << Turns0 << endl;
+	if (CheckEngine() && Fuel > 0)
+	{
+		IsRunning = true;
+		cout << "Дизельный двигатель запущен" << endl;
+	}
+	else if (!CheckEngine())
+		cout << "Дизельный двигатель сломан" << endl;
+	else if (Fuel <= 0)
+		cout << "Дизельный двигатель не заправлен" << endl;
 }

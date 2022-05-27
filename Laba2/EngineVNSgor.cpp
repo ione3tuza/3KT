@@ -5,24 +5,32 @@ using namespace std;
 
 EngineVNSgor::EngineVNSgor()
 {
-	InCorrect = false;
+	IsRunning = false;
+	workingCorrectly = true;
+	Fuel = 0;
 }
 
-EngineVNSgor::EngineVNSgor(bool InCor)
+EngineVNSgor::EngineVNSgor(bool isNotBroken)
 {
-	InCorrect = InCor;
+	IsRunning = false;
+	workingCorrectly = isNotBroken;
+	Fuel = 0;
 }
 
-void EngineVNSgor::CheckCor0()
+void EngineVNSgor::AddFuel(int Litres)
 {
-	setlocale(LC_ALL, "ru");
-	InCorrect = true;
-	cout << "Ошибок нет" << endl;
-
+	Fuel += Litres;
 }
 
-void EngineVNSgor::CheckCor1()
+void EngineVNSgor::Start()
 {
-	InCorrect = false;
-	cout << "Ошибки есть, посетите ближайшую станцию ТО" << endl;
+	if (CheckEngine() && Fuel > 0)
+	{
+		IsRunning = true;
+		cout << "Двигатель внутреннего сгорания запущен" << endl;
+	}
+	else if (!CheckEngine())
+		cout << "Двигатель внутреннего сгорания сломан" << endl;
+	else if (Fuel <= 0)
+		cout << "Двигатель внутреннего сгорания не заправлен" << endl;
 }

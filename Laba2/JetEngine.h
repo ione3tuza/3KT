@@ -3,10 +3,11 @@
 #include <iostream>
 using namespace std;
 
-class JetEngine : private Engine 
+class JetEngine : public Engine 
 {
 public:
 	JetEngine();
+	void Start();
 	void refuel(int Liters);
 	void ShowFuel();
 private:

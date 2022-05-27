@@ -3,19 +3,14 @@ class Engine
 {
 public:
 	Engine(); //конструктор1
-	Engine(bool IsRun); // перегрузка коструктора
+	Engine(bool isNotBroken); // перегрузка коструктора
 
-	void Start();
-	void End();
+	virtual void Start();
+	virtual void End();
+	void FixEngine();
 
-	void PressPedal();//перегрузка
-	void PressPedal(int Force);
-	
-
-private: //приватные поля (доступ из класса(инкапсуляция))
-	bool IsRunning;
-
-	int FuelSupply();
-	int FuelSupply(int supply);
+protected:
+	bool IsRunning, workingCorrectly;
+	virtual bool CheckEngine();
 };
 

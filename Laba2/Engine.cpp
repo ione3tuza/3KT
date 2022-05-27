@@ -5,19 +5,24 @@ using namespace std;
 Engine::Engine()
 {
 	IsRunning = false;
+	workingCorrectly = true;
 }
 
-Engine::Engine(bool IsRun)
+Engine::Engine(bool isNotBroken)
 {
-	IsRunning = IsRun;
+	IsRunning = false;
+	workingCorrectly = isNotBroken;
 }
 
 void Engine::Start()
 {
-	setlocale(LC_ALL, "ru");
-	IsRunning = true;
-	cout << "Двигатель запущен" << endl;
-
+	if (CheckEngine())
+	{
+		IsRunning = true;
+		cout << "Двигатель запущен" << endl;
+	}
+	else
+		cout << "Двигатель сломан" << endl;
 }
 
 void Engine::End()
@@ -26,26 +31,13 @@ void Engine::End()
 	cout << "Двигатель заглушен" << endl;
 }
 
-void Engine::PressPedal()
+void Engine::FixEngine()
 {
-	cout << "Педаль нажата" << endl;
-	cout << "Топливо подается" << endl;
+	workingCorrectly = true;
+	cout << "Двигатель починен" << endl;
 }
 
-void Engine::PressPedal(int Force)
+bool Engine::CheckEngine()
 {
-	cout << "Педаль нажата с силой " << Force << " ньютонов" << endl;
-	int speedOfFuelSupply = 10 * Force;
-	cout << "Топливо подается со скоростью " << FuelSupply(speedOfFuelSupply) << endl;
+	return workingCorrectly;
 }
-
-int Engine::FuelSupply()
-{
-	return 10;
-}
-
-int Engine::FuelSupply(int supply)
-{
-	return supply;
-}
-

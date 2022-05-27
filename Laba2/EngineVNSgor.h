@@ -5,14 +5,13 @@ class EngineVNSgor : public Engine
 {
 public:
 	EngineVNSgor(); //конструктор1
-	EngineVNSgor(bool InCor); // перегрузка коструктора
+	EngineVNSgor(bool isNotBroken); // перегрузка коструктора
 
-	void CheckCor0();
-	void CheckCor1();
+	void AddFuel(int Litres);
+	void Start();
 
-
-private: //приватные поля (доступ из класса(инкапсуляция))
-	bool InCorrect;
+protected:
+	int Fuel;
 };
 
 

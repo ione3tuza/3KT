@@ -3,14 +3,9 @@
 #include <iostream>
 using namespace std;
 
-class DieselEngine : private EngineVNSgor
+class DieselEngine : public EngineVNSgor
 {
 public:
 	DieselEngine();
-
-	void EngineSpeed();
-	void EngineSpeed(int Turns);
-
-private:
-	int Standart;
+	void Start();
 };
